@@ -2,11 +2,9 @@
 
 /* ---- FOR DISPLAY ONLY ---- */
 body {
-  @include breakpoint {
-    display: grid;
-    place-content: center;
-    height: 100vh;
-  }
+  display: grid;
+  place-content: center;
+  height: 100vh;
 }
 /* ---- FOR DISPLAY ONLY ---- */
 
