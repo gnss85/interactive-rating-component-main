@@ -13,6 +13,12 @@ body {
   --rating-width: 24em;
   --padding: 2em;
 
+  --animation-name: fadeIn;
+  --animation-duration: 2s;
+  --animation-timing-function: ease-out;
+  --animation-fill-mode: forwards;
+  --opacity: 0;
+
   flex-direction: column;
   gap: 1.5em;
 
@@ -28,6 +34,12 @@ body {
   border-radius: 1em;
 
   &--star {
+    --animation-name: move-rightIn;
+    --animation-duration: 0.5s;
+    --animation-delay: 1.2s;
+    --opacity: 0;
+    --translateX: -50px;
+
     position: relative;
 
     width: var(--circle-diameter);
@@ -38,20 +50,47 @@ body {
     cursor: pointer;
 
     &::before {
+      --animation-name: scaleIn;
+      --animation-delay: 1.7s;
+      --animation-timing-function: cubic-bezier(0.46, 0.6, 0.78, 1.35);
+      --scale: 0;
+
       content: url(./../assets/images/icon-star.svg);
       position: absolute;
       inset: calc(
         (var(--circle-diameter) / 2) - ((var(--circle-diameter) / 3) / 2)
       );
+
+      animation-name: var(--animation-name);
+      animation-duration: var(--animation-duration);
+      animation-timing-function: var(--animation-timing-function);
+      animation-fill-mode: var(--animation-fill-mode);
+      animation-delay: var(--animation-delay);
+
+      scale: var(--scale);
     }
   }
 
   &--headline {
+    --animation-name: move-rightIn;
+    --animation-duration: 0.8s;
+    --animation-timing-function: cubic-bezier(0.12, -0.22, 0.12, 0.72);
+    --animation-delay: 1.2s;
+    --opacity: 0;
+    --translateX: -50px;
+
     font-size: var(--fs-700);
     font-weight: var(--fw-bold);
   }
 
   &--text {
+    --animation-name: move-leftIn;
+    --animation-duration: 1s;
+    --animation-timing-function: cubic-bezier(0.12, -0.22, 0.12, 0.72);
+    --animation-delay: 1.5s;
+    --opacity: 0;
+    --translateX: 50px;
+
     color: var(--clr-neutral-200);
   }
 
@@ -67,7 +106,7 @@ body {
     & .score {
       place-content: center;
 
-      padding-block-start: 3px;
+      padding-inline-end: 0.6em;
 
       width: var(--circle-diameter);
       aspect-ratio: 1;
@@ -80,6 +119,47 @@ body {
 
       cursor: pointer;
 
+      &:nth-of-type(1) {
+        --animation-name: move-rightIn;
+        --animation-duration: 0.75s;
+        --animation-timing-function: cubic-bezier(0.75, -0.17, 0.27, 2.03);
+        --animation-delay: 1s;
+        --opacity: 0;
+        --translateX: -50px;
+      }
+      &:nth-of-type(2) {
+        --animation-name: move-rightIn;
+        --animation-duration: 0.75s;
+        --animation-timing-function: cubic-bezier(0.75, -0.17, 0.27, 2.03);
+        --animation-delay: 0.8s;
+        --opacity: 0;
+        --translateX: -50px;
+      }
+      &:nth-of-type(3) {
+        --animation-name: move-rightIn;
+        --animation-duration: 0.75s;
+        --animation-timing-function: cubic-bezier(0.75, -0.17, 0.27, 2.03);
+        --animation-delay: 0.6s;
+        --opacity: 0;
+        --translateX: -50px;
+      }
+      &:nth-of-type(4) {
+        --animation-name: move-rightIn;
+        --animation-duration: 0.75s;
+        --animation-timing-function: cubic-bezier(0.75, -0.17, 0.27, 2.03);
+        --animation-delay: 0.4s;
+        --opacity: 0;
+        --translateX: -50px;
+      }
+      &:nth-of-type(5) {
+        --animation-name: move-rightIn;
+        --animation-duration: 0.75s;
+        --animation-timing-function: cubic-bezier(0.75, -0.17, 0.27, 2.03);
+        --animation-delay: 0.2s;
+        --opacity: 0;
+        --translateX: -50px;
+      }
+
       &:active,
       &.active {
         color: var(--clr-neutral-100);
@@ -90,6 +170,7 @@ body {
       &:focus-visible {
         color: var(--clr-neutral-100);
         background-color: var(--clr-primary);
+        transition: all 0.3s ease-in-out;
       }
     }
   }
@@ -107,10 +188,18 @@ body {
 
     cursor: pointer;
 
+    --animation-name: move-upIn;
+    --animation-duration: 1.5s;
+    --animation-timing-function: cubic-bezier(0.12, -0.22, 0.12, 0.72);
+    --animation-delay: 0.8s;
+    --opacity: 0;
+    --translateX: 50px;
+
     &:hover,
     &:focus-visible {
       color: var(--clr-primary);
       background-color: var(--clr-neutral-100);
+      transition: all 0.3s ease-in-out;
     }
   }
 
@@ -123,6 +212,26 @@ body {
     height: 108px;
 
     background-image: url(./../assets/images/illustration-thank-you.svg);
+
+    transform: rotate(120deg);
+    opacity: 0;
+
+    &.animation {
+      animation-name: rotateIn;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+    }
+
+    &.animation-sad {
+      animation-name: sad;
+      animation-duration: 10s;
+      animation-timing-function: ease-out;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-delay: 0;
+    }
   }
 
   &--result {
@@ -146,4 +255,115 @@ body {
 
 #result {
   display: none;
+}
+
+.visible {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.animation-item {
+  animation-name: var(--animation-name);
+  animation-duration: var(--animation-duration);
+  animation-timing-function: var(--animation-timing-function);
+  animation-fill-mode: var(--animation-fill-mode);
+  animation-delay: var(--animation-delay);
+
+  opacity: var(--opacity);
+  scale: var(--scale), 1;
+  transform: translateX(var(--translateX));
+  transform: translateY(var(--translateY));
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move-upIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-downIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-rightIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes move-leftIn {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    scale: 0;
+  }
+  70% {
+    scale: 1.4;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(120deg) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes sad {
+  0% {
+    opacity: 0;
+    transform: rotate(120deg) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-120deg) scale(0.5);
+  }
 }

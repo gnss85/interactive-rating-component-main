@@ -17,10 +17,18 @@ allButtons.forEach((button) => {
 });
 
 submitButton.addEventListener("click", () => {
+  document.querySelector("#vote").style.display = "none";
+  document.querySelector("#result").style.display = "flex";
+  document.querySelector("#result").classList.add("visible");
   if (selectedValue) {
-    document.querySelector("#vote").style.display = "none";
-    document.querySelector("#result").style.display = "flex";
+    document.querySelector(".rating--thanks").classList.add("animation");
     document.querySelector(".rating--result").innerHTML =
       "You selected " + selectedValue + " out of 5";
+  } else {
+    document.querySelector(".rating--thanks").classList.add("animation-sad");
+    document.querySelector(".rating--result").innerHTML = "That was wrong";
+    document.querySelector("#result--headline").innerHTML = "Are you stupid?";
+    document.querySelector("#result--text").innerHTML =
+      "Choosing a rating value is not that hard - just click on a number before submiting.";
   }
 });
