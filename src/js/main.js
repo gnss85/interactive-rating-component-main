@@ -27,8 +27,8 @@ submitButton.addEventListener("click", () => {
   } else {
     document.querySelector(".rating--thanks").classList.add("animation-sad");
     document.querySelector(".rating--result").innerHTML = "That was wrong";
-    document.querySelector(".rating--headline").innerHTML = "Are you stupid?";
-    document.querySelector(".rating--text").innerHTML =
+    document.querySelector("#result--headline").innerHTML = "Are you stupid?";
+    document.querySelector("#result--text").innerHTML =
       "Choosing a rating value is not that hard - just click on a number before submiting.";
   }
 });
