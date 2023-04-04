@@ -64,6 +64,14 @@
   --fs-special: 3.8rem;
 
   --fs-attribution: 0.6875rem;
+
+  --animation-name: none;
+  --animation-duration: 0.5s;
+  --animation-delay: 0.5s;
+  --animation-iteration-count: infinite;
+  --animation-direction: alternate;
+  --animation-timing-function: ease-out;
+  --animation-fill-mode: forwards;
 }
 
 /* ---- GENERAL STYLING ----*/
